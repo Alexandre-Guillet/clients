@@ -10,7 +10,9 @@ const dbPath = join(__dirname, import.meta.env.SQLITE_DB_PATH);
 const db = new Database(dbPath);
 
 export function getClients() {
-  return db.query(`
+  return db
+    .query(
+      `
     SELECT
       id,
       name,
@@ -20,7 +22,9 @@ export function getClients() {
       longitude
     FROM clients
     ORDER BY name
-  `).all();
+  `,
+    )
+    .all();
 }
 
 export default db;
