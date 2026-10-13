@@ -21,6 +21,7 @@ jobs:
 
           script: |
             set -e
+            export PATH="/home/etudiant/.bun/bin:$PATH"
 
             echo "======================================"
             echo "Début du déploiement"
@@ -42,6 +43,9 @@ jobs:
 
             echo "Vérification du service..."
             sudo systemctl status clients
+
+            echo "Petite sieste"
+            sleep 3
 
             echo "Health check..."
             curl --fail http://localhost:3344/
